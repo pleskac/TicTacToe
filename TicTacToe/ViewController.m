@@ -9,10 +9,12 @@
 #import "ViewController.h"
 
 @implementation ViewController
+@synthesize Button01;
 @synthesize Button00;
 @synthesize nameTextField;
 @synthesize nameLabel;
 @synthesize userName = _userName;
+@synthesize Button02;
 
 - (void)didReceiveMemoryWarning
 {
@@ -33,6 +35,8 @@
     [self setNameTextField:nil];
     [self setNameLabel:nil];
     [self setButton00:nil];
+    [self setButton01:nil];
+    [self setButton02:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -77,12 +81,20 @@
     }
     return YES;
 }
-- (IBAction)Clicked00:(id)sender {
-    if([self.Button00 currentTitle].length == 0){
-        [self.Button00 setTitle:@"Clicked" forState:UIControlStateNormal];
-    }
-    else{
-        [self.Button00 setTitle:@"" forState:UIControlStateNormal];
-    }
+- (IBAction)Clicked02:(id)sender {
+    [self.Button02 setTitle:@"X" forState:UIControlStateNormal];
+    [self.Button02 setEnabled:false];
 }
+
+- (IBAction)Clicked01:(id)sender {
+    [self.Button01 setTitle:@"X" forState:UIControlStateNormal];
+    [self.Button01 setEnabled:false];
+}
+
+- (IBAction)Clicked00:(id)sender {
+    [self.Button00 setTitle:@"X" forState:UIControlStateNormal];
+    [self.Button00 setEnabled:false];
+}
+
+
 @end
