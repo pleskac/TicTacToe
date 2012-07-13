@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 @implementation ViewController
+@synthesize Button00;
+@synthesize nameTextField;
+@synthesize nameLabel;
+@synthesize userName = _userName;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,6 +30,9 @@
 
 - (void)viewDidUnload
 {
+    [self setNameTextField:nil];
+    [self setNameLabel:nil];
+    [self setButton00:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,4 +64,25 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == self.nameTextField) {
+        self.userName = self.nameTextField.text;
+        NSString *nameString = self.userName;
+        if ([nameString length] == 0) {
+            nameString = @"World";
+        }
+        NSString *greeting = [[NSString alloc] initWithFormat:@"Hello, %@!", nameString];
+        self.nameLabel.text = greeting;
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+- (IBAction)Clicked00:(id)sender {
+    if([self.Button00 currentTitle].length == 0){
+        [self.Button00 setTitle:@"Clicked" forState:UIControlStateNormal];
+    }
+    else{
+        [self.Button00 setTitle:@"" forState:UIControlStateNormal];
+    }
+}
 @end

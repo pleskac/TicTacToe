@@ -274,6 +274,7 @@
 				386F6D7915AFC3E0001CA188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

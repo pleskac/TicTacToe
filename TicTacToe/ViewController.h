@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<UITextFieldDelegate>
+- (IBAction)Clicked00:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *Button00;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (copy, nonatomic) NSString *userName;
 @end
