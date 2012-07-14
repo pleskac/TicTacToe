@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "Board.h"
 @implementation ViewController
 @synthesize MultiplayerToggle;
 @synthesize Button01;
@@ -16,6 +16,8 @@
 @synthesize nameLabel;
 @synthesize userName = _userName;
 @synthesize Button02;
+Board *currentBoard;
+bool multiplayer = false;
 
 - (void)didReceiveMemoryWarning
 {
@@ -101,9 +103,7 @@
 - (IBAction)PlayerSelectionChanged:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"message" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
-    //reset the board
     
-    //change the playing terms
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -113,6 +113,23 @@
         BOOL oldstate = ![MultiplayerToggle isOn];
         [MultiplayerToggle setOn:oldstate animated:false];
     }
+    else{
+        //reset the board
+        [self resetAllButtons];
+        [currentBoard reset];
+        
+        //change the playing terms
+        multiplayer = !multiplayer;
+    }
+}
+
+-(void)resetAllButtons{
+    [self.Button00 setEnabled:true];
+    [self.Button00 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button01 setEnabled:true];
+    [self.Button01 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button02 setEnabled:true];
+    [self.Button02 setTitle:@"" forState:UIControlStateNormal];
 }
 
 @end
