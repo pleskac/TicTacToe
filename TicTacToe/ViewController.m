@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @implementation ViewController
+@synthesize MultiplayerToggle;
 @synthesize Button01;
 @synthesize Button00;
 @synthesize nameTextField;
@@ -37,6 +38,7 @@
     [self setButton00:nil];
     [self setButton01:nil];
     [self setButton02:nil];
+    [self setMultiplayerToggle:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -107,7 +109,10 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"button index = %i", buttonIndex);
     //Cancel = 0
-    //OK = 1
+    if(buttonIndex == 0){
+        BOOL oldstate = ![MultiplayerToggle isOn];
+        [MultiplayerToggle setOn:oldstate animated:false];
+    }
 }
 
 @end

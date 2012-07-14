@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UISwitch *MultiplayerToggle;
 - (IBAction)Clicked02:(id)sender;
 - (IBAction)Clicked01:(id)sender;
 - (IBAction)Clicked00:(id)sender;

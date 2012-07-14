@@ -111,6 +111,7 @@
                         <outlet property="Button00" destination="gMw-Ch-6CI" id="9V3-f1-zxg"/>
                         <outlet property="Button01" destination="RzJ-6m-znI" id="2DV-VP-YfC"/>
                         <outlet property="Button02" destination="wEJ-sE-MHz" id="j8f-9n-lA3"/>
+                        <outlet property="MultiplayerToggle" destination="7eO-C8-fIY" id="zuN-Yu-0Uf"/>
                         <outlet property="nameLabel" destination="kp4-XT-4Wn" id="MFo-NR-4HZ"/>
                         <outlet property="nameTextField" destination="g65-jA-4yx" id="zMd-eX-j9t"/>
                     </connections>
@@ -118,22 +119,6 @@
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Clicked00:"/>
-                <relationship kind="action" name="Clicked01:"/>
-                <relationship kind="action" name="Clicked02:"/>
-                <relationship kind="action" name="PlayerSelectionChanged:"/>
-                <relationship kind="outlet" name="Button00" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Button01" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Button02" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
