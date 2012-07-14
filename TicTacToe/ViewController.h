@@ -11,11 +11,10 @@
 @interface ViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UISwitch *MultiplayerToggle;
-- (IBAction)Clicked02:(id)sender;
-- (IBAction)Clicked01:(id)sender;
-- (IBAction)Clicked00:(id)sender;
+- (IBAction)Clicked:(id)sender;
 - (IBAction)PlayerSelectionChanged:(id)sender;
 -(void)resetAllButtons;
+-(void)makeAIMove;
 @property (weak, nonatomic) IBOutlet UIButton *Button01;
 @property (weak, nonatomic) IBOutlet UIButton *Button00;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

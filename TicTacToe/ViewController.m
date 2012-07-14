@@ -18,6 +18,7 @@
 @synthesize Button02;
 Board *currentBoard;
 bool multiplayer = false;
+bool playX = true;
 
 - (void)didReceiveMemoryWarning
 {
@@ -85,25 +86,34 @@ bool multiplayer = false;
     }
     return YES;
 }
-- (IBAction)Clicked02:(id)sender {
-    [self.Button02 setTitle:@"X" forState:UIControlStateNormal];
-    [self.Button02 setEnabled:false];
-}
 
-- (IBAction)Clicked01:(id)sender {
-    [self.Button01 setTitle:@"X" forState:UIControlStateNormal];
-    [self.Button01 setEnabled:false];
-}
-
-- (IBAction)Clicked00:(id)sender {
-    [self.Button00 setTitle:@"X" forState:UIControlStateNormal];
-    [self.Button00 setEnabled:false];
+- (IBAction)Clicked:(id)sender {
+    if(playX){
+        [sender setTitle:@"X" forState:UIControlStateNormal];
+        //UPDATE CURRENT BOARD
+        if(multiplayer){
+            //DO THE AI ALGORITHM!!!
+            //Basically, but an "O" somewhere on the board and disable it
+            [self makeAIMove];
+            playX = !playX;
+        }
+    }
+    else{
+        //UPDATE CURRENT BOARD
+        [sender setTitle:@"O" forState:UIControlStateNormal];
+    }
+    playX = !playX;
+    [sender setEnabled:false];
 }
 
 - (IBAction)PlayerSelectionChanged:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"message" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
     
+}
+
+-(int)getPositionFromButton:(id)button{
+    return -1;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -130,6 +140,18 @@ bool multiplayer = false;
     [self.Button01 setTitle:@"" forState:UIControlStateNormal];
     [self.Button02 setEnabled:true];
     [self.Button02 setTitle:@"" forState:UIControlStateNormal];
+    //TODO: add the rest of the buttons
+}
+
+-(void)makeAIMove{
+    for(int i = 0; i < 9; i++){
+        if([currentBoard getStateByPosition:i] == 0){
+            [currentBoard setStateByPosition:i Value:2];
+            //update the board
+        }
+    }
+    
+    //else, do nothing
 }
 
 @end
