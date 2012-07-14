@@ -12,6 +12,7 @@
 - (IBAction)Clicked02:(id)sender;
 - (IBAction)Clicked01:(id)sender;
 - (IBAction)Clicked00:(id)sender;
+- (IBAction)PlayerSelectionChanged:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *Button01;
 @property (weak, nonatomic) IBOutlet UIButton *Button00;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

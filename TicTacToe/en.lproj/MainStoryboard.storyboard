@@ -13,6 +13,14 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="A6I-cL-HfB">
+                                <rect key="frame" x="12" y="49" width="297" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <navigationBar contentMode="scaleToFill" id="Cm9-w0-Jjw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -36,7 +44,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" minimumFontSize="17" id="g65-jA-4yx">
-                                <rect key="frame" x="15" y="103" width="290" height="31"/>
+                                <rect key="frame" x="15" y="103" width="155" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
@@ -45,7 +53,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="kp4-XT-4Wn">
-                                <rect key="frame" x="103" y="68" width="114" height="21"/>
+                                <rect key="frame" x="201" y="108" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -81,6 +89,20 @@
                                     <action selector="Clicked02:" destination="2" eventType="touchUpInside" id="LPZ-v3-Gaq"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7eO-C8-fIY">
+                                <rect key="frame" x="219" y="58" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="PlayerSelectionChanged:" destination="2" eventType="valueChanged" id="skn-NU-ZfX"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Multiplayer Mode" lineBreakMode="tailTruncation" minimumFontSize="10" id="QcG-e8-2AH">
+                                <rect key="frame" x="26" y="61" width="158" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -103,6 +125,7 @@
                 <relationship kind="action" name="Clicked00:"/>
                 <relationship kind="action" name="Clicked01:"/>
                 <relationship kind="action" name="Clicked02:"/>
+                <relationship kind="action" name="PlayerSelectionChanged:"/>
                 <relationship kind="outlet" name="Button00" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="Button01" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="Button02" candidateClass="UIButton"/>

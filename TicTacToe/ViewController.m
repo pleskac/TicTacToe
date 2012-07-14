@@ -96,5 +96,18 @@
     [self.Button00 setEnabled:false];
 }
 
+- (IBAction)PlayerSelectionChanged:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"message" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
+    //reset the board
+    
+    //change the playing terms
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"button index = %i", buttonIndex);
+    //Cancel = 0
+    //OK = 1
+}
 
 @end
