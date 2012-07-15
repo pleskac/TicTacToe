@@ -18,7 +18,7 @@
 -(void)makeAIMove;
 -(UIButton*)getButtonFromPosition:(int)position;
 -(int)getPositionFromButton:(id)button;
-
+-(void)RegisterMoveAt:(id)button Player:(int)player;
 - (IBAction)Clicked:(id)sender;
 
 

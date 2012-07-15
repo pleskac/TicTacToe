@@ -83,7 +83,7 @@ bool playX = true;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -102,25 +102,32 @@ bool playX = true;
 
 - (IBAction)Clicked:(id)sender {
     if(playX){
-        [sender setTitle:@"X" forState:UIControlStateNormal];
-        int pos = [self getPositionFromButton:sender];
-        [currentBoard setStateByPosition:pos Value:1];
-        //UPDATE CURRENT BOARD
+        [self RegisterMoveAt:sender Player:1];
+
         if(multiplayer){
-            //DO THE AI ALGORITHM!!!
-            //Basically, but an "O" somewhere on the board and disable it
             [self makeAIMove];
             playX = !playX;
         }
     }
     else{
-        //UPDATE CURRENT BOARD
-        [sender setTitle:@"O" forState:UIControlStateNormal];
-        int pos = [self getPositionFromButton:sender];
-        [currentBoard setStateByPosition:pos Value:2];
+        [self RegisterMoveAt:sender Player:2];
     }
     playX = !playX;
-    [sender setEnabled:false];
+    
+}
+
+-(void)RegisterMoveAt:(id)button Player:(int)player{
+    
+    if(player == 1){
+        [button setTitle:@"X" forState:UIControlStateNormal];
+    }
+    else if(player == 2){
+        [button setTitle:@"O" forState:UIControlStateNormal];
+    }
+    int pos = [self getPositionFromButton:button];
+    [currentBoard setStateByPosition:pos Value:player];
+    [button setEnabled:false];
+
 }
 
 - (IBAction)PlayerSelectionChanged:(id)sender {
@@ -172,6 +179,7 @@ bool playX = true;
         [self resetAllButtons];
         [currentBoard reset];
         playX = true; 
+        
         //change the playing terms
         multiplayer = !multiplayer;
     }
@@ -203,9 +211,7 @@ bool playX = true;
 -(void)makeAIMove{
     for(int i = 0; i < 9; i++){
         if([currentBoard getStateByPosition:i] == 0){
-            [currentBoard setStateByPosition:i Value:2];
-            [[self getButtonFromPosition:i] setTitle:@"O" forState:UIControlStateNormal];
-            [[self getButtonFromPosition:i] setEnabled:false];
+            [self RegisterMoveAt:[self getButtonFromPosition:i] Player:2];
             return;
         }
     }
