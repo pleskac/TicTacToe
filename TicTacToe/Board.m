@@ -11,7 +11,7 @@
 @implementation Board
 //0 = unplayed
 //1 = x
-//2 = y
+//2 = o
 int theBoard[9];
 
 -(void)reset{
@@ -21,14 +21,15 @@ int theBoard[9];
 }
 
 -(int)getStateByRow:(int)row Column:(int)col{
-    return nil;
+    return -1;
 }
 
 //TODO: better error handling
 -(int)getStateByPosition:(int)pos{
-    if(pos >= 0 && pos < 9)
+    if(pos >= 0 && pos < 9){
         return theBoard[pos];
-    return nil;
+    }
+    return -1;
 }
 
 //TODO: error checking

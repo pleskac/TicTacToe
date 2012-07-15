@@ -15,6 +15,12 @@
 @synthesize nameTextField;
 @synthesize nameLabel;
 @synthesize userName = _userName;
+@synthesize Button22;
+@synthesize Button21;
+@synthesize Button20;
+@synthesize Button12;
+@synthesize Button11;
+@synthesize Button10;
 @synthesize Button02;
 Board *currentBoard;
 bool multiplayer = false;
@@ -31,6 +37,7 @@ bool playX = true;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    currentBoard = [[Board alloc] init];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -42,6 +49,12 @@ bool playX = true;
     [self setButton01:nil];
     [self setButton02:nil];
     [self setMultiplayerToggle:nil];
+    [self setButton10:nil];
+    [self setButton11:nil];
+    [self setButton12:nil];
+    [self setButton20:nil];
+    [self setButton21:nil];
+    [self setButton22:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -90,6 +103,8 @@ bool playX = true;
 - (IBAction)Clicked:(id)sender {
     if(playX){
         [sender setTitle:@"X" forState:UIControlStateNormal];
+        int pos = [self getPositionFromButton:sender];
+        [currentBoard setStateByPosition:pos Value:1];
         //UPDATE CURRENT BOARD
         if(multiplayer){
             //DO THE AI ALGORITHM!!!
@@ -101,6 +116,8 @@ bool playX = true;
     else{
         //UPDATE CURRENT BOARD
         [sender setTitle:@"O" forState:UIControlStateNormal];
+        int pos = [self getPositionFromButton:sender];
+        [currentBoard setStateByPosition:pos Value:2];
     }
     playX = !playX;
     [sender setEnabled:false];
@@ -113,6 +130,33 @@ bool playX = true;
 }
 
 -(int)getPositionFromButton:(id)button{
+    if(button == self.Button00){
+        return 0;
+    }
+    else if(button == self.Button01){
+        return 1;
+    }
+    else if(button == self.Button02){
+        return 2;
+    }
+    else if(button == self.Button10){
+        return 3;
+    }
+    else if(button == self.Button11){
+        return 4;
+    }
+    else if(button == self.Button12){
+        return 5;
+    }
+    else if(button == self.Button20){
+        return 6;
+    }
+    else if(button == self.Button21){
+        return 7;
+    }
+    else if(button == self.Button22){
+        return 8;
+    }
     return -1;
 }
 
@@ -127,7 +171,7 @@ bool playX = true;
         //reset the board
         [self resetAllButtons];
         [currentBoard reset];
-        
+        playX = true; 
         //change the playing terms
         multiplayer = !multiplayer;
     }
@@ -140,7 +184,20 @@ bool playX = true;
     [self.Button01 setTitle:@"" forState:UIControlStateNormal];
     [self.Button02 setEnabled:true];
     [self.Button02 setTitle:@"" forState:UIControlStateNormal];
-    //TODO: add the rest of the buttons
+    
+    [self.Button10 setEnabled:true];
+    [self.Button10 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button11 setEnabled:true];
+    [self.Button11 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button12 setEnabled:true];
+    [self.Button12 setTitle:@"" forState:UIControlStateNormal];
+    
+    [self.Button20 setEnabled:true];
+    [self.Button20 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button21 setEnabled:true];
+    [self.Button21 setTitle:@"" forState:UIControlStateNormal];
+    [self.Button22 setEnabled:true];
+    [self.Button22 setTitle:@"" forState:UIControlStateNormal];
 }
 
 -(void)makeAIMove{
@@ -148,6 +205,7 @@ bool playX = true;
         if([currentBoard getStateByPosition:i] == 0){
             [currentBoard setStateByPosition:i Value:2];
             [[self getButtonFromPosition:i] setTitle:@"O" forState:UIControlStateNormal];
+            [[self getButtonFromPosition:i] setEnabled:false];
             return;
         }
     }
@@ -163,6 +221,18 @@ bool playX = true;
             return self.Button01;
         case 2:
             return self.Button02;
+        case 3:
+            return self.Button10;
+        case 4:
+            return self.Button11;
+        case 5:
+            return self.Button12;
+        case 6:
+            return self.Button20;
+        case 7:
+            return self.Button21;
+        case 8:
+            return self.Button22;
     }
     return nil;
 }
