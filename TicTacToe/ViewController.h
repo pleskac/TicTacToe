@@ -15,6 +15,7 @@
 - (IBAction)PlayerSelectionChanged:(id)sender;
 -(void)resetAllButtons;
 -(void)makeAIMove;
+-(UIButton*)getButtonFromPosition:(int)position;
 @property (weak, nonatomic) IBOutlet UIButton *Button01;
 @property (weak, nonatomic) IBOutlet UIButton *Button00;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

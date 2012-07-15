@@ -107,7 +107,7 @@ bool playX = true;
 }
 
 - (IBAction)PlayerSelectionChanged:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"message" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This will clear the board" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
     
 }
@@ -147,11 +147,24 @@ bool playX = true;
     for(int i = 0; i < 9; i++){
         if([currentBoard getStateByPosition:i] == 0){
             [currentBoard setStateByPosition:i Value:2];
-            //update the board
+            [[self getButtonFromPosition:i] setTitle:@"O" forState:UIControlStateNormal];
+            return;
         }
     }
     
     //else, do nothing
+}
+
+-(UIButton*)getButtonFromPosition:(int)position{
+    switch (position){
+        case 0:
+            return self.Button00;
+        case 1:
+            return self.Button01;
+        case 2:
+            return self.Button02;
+    }
+    return nil;
 }
 
 @end
